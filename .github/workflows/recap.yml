@@ -2,8 +2,8 @@ name: Daily Maintenance Recap
 
 on:
   schedule:
-    # 06:30 UTC = 10:30 Dubai (UTC+4). Adjust as needed.
-    - cron: "30 6 * * *"
+    # 14:00 UTC = 18:00 Dubai (UTC+4). Adjust if needed.
+    - cron: "0 14 * * *"
   workflow_dispatch: {}
 
 jobs:
@@ -22,5 +22,6 @@ jobs:
           GREEN_API_ID_INSTANCE: ${{ secrets.GREEN_API_ID_INSTANCE }}
           GREEN_API_TOKEN: ${{ secrets.GREEN_API_TOKEN }}
           WHATSAPP_CHAT_ID: ${{ secrets.WHATSAPP_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LOOKBACK_HOURS: "36"
         run: python recap.py
