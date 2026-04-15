@@ -21,7 +21,7 @@ GREEN_TOKEN = os.environ["GREEN_API_TOKEN"]
 CHAT_ID = os.environ["WHATSAPP_CHAT_ID"]
 GEMINI_KEY = os.environ["GEMINI_API_KEY"]
 LOOKBACK_HOURS = int(os.environ.get("LOOKBACK_HOURS", "36"))
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
 
 BASE = f"https://api.green-api.com/waInstance{GREEN_ID}"
 
