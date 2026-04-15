@@ -1,0 +1,26 @@
+name: Daily Maintenance Recap
+
+on:
+  schedule:
+    # 06:30 UTC = 10:30 Dubai (UTC+4). Adjust as needed.
+    - cron: "30 6 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  recap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run recap
+        env:
+          GREEN_API_ID_INSTANCE: ${{ secrets.GREEN_API_ID_INSTANCE }}
+          GREEN_API_TOKEN: ${{ secrets.GREEN_API_TOKEN }}
+          WHATSAPP_CHAT_ID: ${{ secrets.WHATSAPP_CHAT_ID }}
+          LOOKBACK_HOURS: "36"
+        run: python recap.py
